@@ -1,0 +1,56 @@
+service: serverless-epgb
+app: serverless-epgb
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  memorySize: 128
+  timeout: 30
+
+functions:
+
+  getPlayer:
+    handler: handler.getPlayer
+    events:
+     - http:
+         path: player/{id}
+         method: get
+         cors: true
+          
+  getAllPlayers:
+    handler: handler.getAllPlayers
+    events:
+     - http:
+         path: player
+         method: get
+         cors: true
+
+  createPlayer:
+    handler: handler.createPlayer
+    events:
+      - http:
+          path: player
+          method: post
+          cors: true
+              
+  updatePlayer:
+    handler: handler.updatePlayer
+    events:
+      - http:
+          path: player/{id}
+          method: put
+          cors: true
+          
+  deletePlayer:
+    handler: handler.deletePlayer
+    events:
+      - http:
+          path: player/{id}
+          method: delete
+          cors: true    
+            
+plugins:
+  - serverless-offline
+         
+  
+      
