@@ -31,7 +31,7 @@ module.exports.createPlayer = (event, context, callback) => {
         headers: {
           'Access-Control-Allow-Origin': '*'
         },
-        body: 'Player Created! id: ' + res
+        body: JSON.stringify(res)
       });
     })
     .catch(e => {
@@ -74,7 +74,7 @@ module.exports.updatePlayer = (event, context, callback) => {
         headers: {
           'Access-Control-Allow-Origin': '*'
         },
-        body: 'Player Updated!' + res
+        body: JSON.stringify(data)
       });
     })
     .catch(e => {
